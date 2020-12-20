@@ -1,1 +1,99 @@
-  
+html {
+  margin: 0;
+  padding: 0;
+}
+.App-header {
+  background-color: #0b357b;
+  height: 132px;
+}
+.header {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+.header .logo {
+  width: 150px;
+}
+.header-menu {
+  display: flex;
+}
+.header-menu-nav {
+  padding: 0;
+}
+.header-menu-nav li {
+  margin: 0px;
+  list-style: none;
+  float: left;
+  width: 200px;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.green {
+  border-bottom: 4px solid #378e3c;
+}
+.red {
+  border-bottom: 4px solid #f60257;
+}
+.yellow {
+  border-bottom: 4px solid #ffca26;
+}
+.blue {
+  border-bottom: 4px solid #2296f3;
+}
+.App-cotainer {
+  height: auto;
+  margin: 30px auto;
+  width: 80%;
+}
+.container-header {
+  display: flex;
+  justify-content: space-between;
+}
+.bookmark {
+  background-color: #0b357b;
+  padding: 4px 15px;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 16px;
+  margin-right: 10px;
+}
+.search {
+  padding: 4px 15px;
+}
+.container-header h1 {
+  font-size: 38px;
+  padding: 5px 0px;
+  margin: 0px;
+  color: #222;
+}
+.container-header-right {
+  padding: 20px 0px;
+}
+.container {
+  display: flex;
+}
+.container-left {
+  width: 50%;
+}
+.container-right {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  align-self: auto;
+}
+.col-6{
+  width: 50% !important;
+}
+.col-3 {
+  width: 25%;
+}
+
+.App-footer {
+  background-color: #0b357b;
+  height: 200px;
+  margin-top: 10px;
+}

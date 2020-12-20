@@ -1,0 +1,26 @@
+.contaner-post {
+    background-color: #0b357b;
+    width: 100%;  
+    float: left;
+    border-bottom: 4px solid green;
+    padding: 0px;
+  }
+  .post-content {
+    color: #fff;
+    margin: 0px 10px;
+    padding: 5px;
+  }
+  .post-content h2 {
+    margin: 0px;
+    padding: 0px;
+    font-size: 20px;
+  }
+  .post-content p {
+
+    margin: 5px 0px;
+    font-size: 14px;
+  }
+  .container-wrap{
+    display: flex;
+    padding: 10px;
+  }
