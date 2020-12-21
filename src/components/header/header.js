@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./header.css";
+
 import logo from "../../assets/logo.png";
 
 import { Link } from "react-router-dom";
@@ -19,7 +20,9 @@ export default class Header extends Component {
           <Link to="/">
             <img src={logo} className="logo" alt="Logo" />{" "}
           </Link>
+          
           <div className="header-menu">
+            <button className="header-menu-drop"> <i class="fa fa-bars"></i> </button>
             <ul className="header-menu-nav">
               <Link to="/">
                 <li className="green"> News Today </li>

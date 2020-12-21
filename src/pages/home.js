@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Article from "../components/article/article";
-
+import "../assets/media.css";
 import { Link } from "react-router-dom";
 
 export default class Home extends Component {
@@ -62,21 +62,21 @@ export default class Home extends Component {
           </div>
         </div>
         <div className="container-wrapper">
-          <div className="col-3">
+          <div className="col-4">
             <Article
               media={media}
               mediaTitle={mediaTitle}
               mediaDesc={mediaDesc}
             />
           </div>
-          <div className="col-3">
+          <div className="col-4">
             <Article
               media={media}
               mediaTitle={mediaTitle}
               mediaDesc={mediaDesc}
             />
           </div>
-          <div className="col-3">
+          <div className="col-4">
             <Article
               media={media}
               mediaTitle={mediaTitle}
@@ -92,13 +92,13 @@ export default class Home extends Component {
             </div>
           </div>
           <div className="container-wrapper">
-            <div className="col-3">
+            <div className="col-4">
               <Article media={media} mediaTitle={mediaTitle} />
             </div>
-            <div className="col-3">
+            <div className="col-4">
               <Article media={media} mediaTitle={mediaTitle} />
             </div>
-            <div className="col-3">
+            <div className="col-4">
               <Article media={media} mediaTitle={mediaTitle} />
             </div>
           </div>

@@ -5,11 +5,12 @@
 1. Understand Scope of Project -> Done
 2. Plan of Design -> Done
 3. Collect all Images (Resource) and API List Postman Collection. -> Done
-4. Design Project from Scrach make it Beautiful. -> Done
-5. Testing all Design Part. -> Working...
-6. Connect with API.
-7. Testing.
-8. Deployment. 
+4. Design Project from Scrach make it Beautiful in Desktop -> Done
+5. Responsive Desgin Mobile Device- > Working....
+6. Testing all Design Part. 
+7. Connect with API.
+8. Testing.
+9. Deployment. 
 
 
 #  Pages
