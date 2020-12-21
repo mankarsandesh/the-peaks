@@ -47,6 +47,7 @@
     border: none;
     font-size: 16px;
     border: none;
+    width: 200px;
   }
   .header-search input:focus {
     outline: none;

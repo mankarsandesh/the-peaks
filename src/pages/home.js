@@ -22,8 +22,8 @@ export default class Home extends Component {
                 <i class="fa fa-bookmark"></i>View Bookmark
               </button>
             </Link>
-            <select className="search">
-              <option value="">Select Options</option>
+
+            <select className="select-article-type">
               <option value="">Newest first</option>
               <option value="">Oldest first</option>
               <option value="">Most Popular</option>
@@ -93,22 +93,13 @@ export default class Home extends Component {
           </div>
           <div className="container-wrapper">
             <div className="col-3">
-              <Article
-                media={media}
-                mediaTitle={mediaTitle}
-              />
+              <Article media={media} mediaTitle={mediaTitle} />
             </div>
             <div className="col-3">
-              <Article
-                media={media}
-                mediaTitle={mediaTitle}
-              />
+              <Article media={media} mediaTitle={mediaTitle} />
             </div>
             <div className="col-3">
-              <Article
-                media={media}
-                mediaTitle={mediaTitle}
-              />
+              <Article media={media} mediaTitle={mediaTitle} />
             </div>
           </div>
         </div>
