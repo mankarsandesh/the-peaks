@@ -2,12 +2,7 @@ import React, { Component } from "react";
 import "./header.css";
 import logo from "../../assets/logo.png";
 
-import {
-  Link,
-} from "react-router-dom";
-
-
-
+import { Link } from "react-router-dom";
 
 export default class Header extends Component {
   constructor() {
@@ -21,13 +16,23 @@ export default class Header extends Component {
     return (
       <div className="App-header">
         <div className="header">
-          <Link to="/"> <img src={logo} className="logo" alt="Logo"/> </Link>
+          <Link to="/">
+            <img src={logo} className="logo" alt="Logo" />{" "}
+          </Link>
           <div className="header-menu">
             <ul className="header-menu-nav">
-              <li className="green">  News Today</li>
-              <li className="red">Sports</li>
-              <li className="yellow">Culture</li>
-              <li className="blue">Lifestyle</li>
+              <Link to="/">
+                <li className="green"> News Today </li>
+              </Link>
+              <Link to="/category/sports">
+                <li className="red">Sports</li>
+              </Link>
+              <Link to="/category/culture">
+                <li className="yellow">Culture</li>
+              </Link>
+              <Link to="/category/lifestyle">
+                <li className="blue">Lifestyle</li>
+              </Link>
             </ul>
             <div className="header-search">
               <i

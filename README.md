@@ -15,8 +15,8 @@
 #  Pages
 1. Home Page - Done
 2. Article Page 
-3. Category Page
-4. Search Page 
+3. Category Page - Done
+4. Search Page  - Done
 
 
 
