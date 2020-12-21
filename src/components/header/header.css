@@ -1,6 +1,7 @@
 .App-header {
     background-color: #0b357b;
     height: 135px;
+    min-height: 100%;
   }
   .header {
     width: 80%;
@@ -8,7 +9,7 @@
     padding-top: 10px;
   }
   .header .logo {
-    width: 150px;
+    width: 140px;
   }
   .header-menu {
     display: flex;
@@ -25,7 +26,7 @@
     width: 200px;
     color: #fff;
     text-align: center;
-    padding: 10px 0px;
+    padding: 13px 0px;
     text-transform: uppercase;
     font-weight: 600;
     cursor: pointer;
@@ -34,11 +35,11 @@
     min-width: 100px;
     text-align: center;
     display: flex;
-    border-bottom: 4px solid #fff;
+    border-bottom: 3px solid #fff;
     align-items: center;
     background: #123f8c;
     color: #9bafcf !important;
-    padding: 10px 10px;
+    padding: 13px 10px;
   }
   .header-search input {
     padding: 0px 10px;
@@ -76,14 +77,14 @@
     font-size: 18px;
   }
   .green {
-    border-bottom: 4px solid #378e3c;
+    border-bottom: 3px solid #378e3c;
   }
   .red {
-    border-bottom: 4px solid #f60257;
+    border-bottom: 3px solid #f60257;
   }
   .yellow {
-    border-bottom: 4px solid #ffca26;
+    border-bottom: 3px solid #ffca26;
   }
   .blue {
-    border-bottom: 4px solid #2296f3;
+    border-bottom: 3px solid #2296f3;
   }
