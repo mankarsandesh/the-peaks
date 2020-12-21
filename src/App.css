@@ -2,7 +2,7 @@ html {
   margin: 0;
   padding: 0;
 }
-
+/* Home Page / Search page / */
 .App-cotainer {
   height: auto;
   margin: 30px auto;
@@ -52,12 +52,7 @@ html {
   flex-wrap: wrap;
   align-self: auto;
 }
-.col-6 {
-  width: 50% !important;
-}
-.col-3 {
-  width: 33.3333%;
-}
+
 .container-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -75,4 +70,49 @@ html {
 }
 .container-category .category-header .see-more a {
   color: #2296f3;
+}
+
+/* Article Page  */
+.container-aricle {
+  display: flex;
+}
+.article-right {
+  padding: 10px;
+  vertical-align: middle;
+}
+.article-right img {
+  margin-top: 40%;
+  width: 100%;
+}
+.article-right .description {
+  font-size: 12px;
+}
+.article-right .article-img {
+  width: 80%;
+  padding: 20px;
+  color: grey;
+}
+.article-date {
+  font-size: 12px;
+}
+.container-aricle h1 {
+  font-size: 30px;
+}
+.container-aricle h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+.container-aricle hr {
+  color: red;
+  border: 0.1px solid #ececec;
+}
+.container-aricle .article-description {
+  font-size: 14px;
+}
+/* Master CSS */
+.col-6 {
+  width: 50% !important;
+}
+.col-3 {
+  width: 33.3333%;
 }

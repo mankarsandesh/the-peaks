@@ -8,7 +8,7 @@ import Home from "./pages/home";
 import Category from "./pages/category";
 import Bookmark from "./pages/bookmark";
 import Search from "./pages/search";
-
+import Articles from "./pages/articles";
 export default class App extends Component {
   render() {
     return (
@@ -21,6 +21,7 @@ export default class App extends Component {
             <Route path="/category/" component={Category} />
             <Route path="/allbookmark/" component={Bookmark} />
             <Route path="/search/" component={Search} />
+            <Route path="/article/" component={Articles} />
           </Switch>
           <Footer />
         </div>
