@@ -18,11 +18,10 @@ export default class Header extends Component {
     return (
       <div className="App-header">
         <div className="header">
-          
           <div className="logo">
-          <Link to="/">
-            <img src={logo} className="logo" alt="Logo" />{" "}
-          </Link>
+            <Link to="/">
+              <img src={logo} className="logo" alt="Logo" />{" "}
+            </Link>
           </div>
 
           <div className="header-menu">
@@ -35,22 +34,21 @@ export default class Header extends Component {
               <i className="fa fa-bars"></i>
             </button>
             {/* For Desktop */}
-              <ul className="header-menu-nav">
-                <Link to="/">
-                  <li className="green"> News Today </li>
-                </Link>
-                <Link to="/category/sports">
-                  <li className="red">Sports</li>
-                </Link>
-                <Link to="/category/culture">
-                  <li className="yellow">Culture</li>
-                </Link>
-                <Link to="/category/lifestyle">
-                  <li className="blue">Lifestyle</li>
-                </Link>
-              </ul>
-              
-            
+            <ul className="header-menu-nav">
+              <Link to="/">
+                <li className="green"> News Today </li>
+              </Link>
+              <Link to="/category/sports">
+                <li className="red">Sports</li>
+              </Link>
+              <Link to="/category/culture">
+                <li className="yellow">Culture</li>
+              </Link>
+              <Link to="/category/lifestyle">
+                <li className="blue">Lifestyle</li>
+              </Link>
+            </ul>
+
             <div className="header-search">
               <i
                 className="fa fa-search"
@@ -63,28 +61,26 @@ export default class Header extends Component {
               ) : null}
             </div>
           </div>
-          
         </div>
-       
+
         {this.state.showMenu ? (
-               <div className="header-menu-mobile">
-              <ul className="header-menu-nav-mobile">
-                <Link to="/">
-                  <li className="green"> News Today </li>
-                </Link>
-                <Link to="/category/sports">
-                  <li className="red">Sports</li>
-                </Link>
-                <Link to="/category/culture">
-                  <li className="yellow">Culture</li>
-                </Link>
-                <Link to="/category/lifestyle">
-                  <li className="blue">Lifestyle</li>
-                </Link>
-              </ul>
-              </div>  
-            ) : null}
-            
+          <div className="header-menu-mobile">
+            <ul className="header-menu-nav-mobile">
+              <Link to="/">
+                <li className="green"> News Today </li>
+              </Link>
+              <Link to="/category/sports">
+                <li className="red">Sports</li>
+              </Link>
+              <Link to="/category/culture">
+                <li className="yellow">Culture</li>
+              </Link>
+              <Link to="/category/lifestyle">
+                <li className="blue">Lifestyle</li>
+              </Link>
+            </ul>
+          </div>
+        ) : null}
       </div>
     );
   }
