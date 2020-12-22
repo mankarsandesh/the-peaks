@@ -2,15 +2,83 @@ import React, { Component } from "react";
 import Article from "../components/article/article";
 import "../assets/media.css";
 import { Link } from "react-router-dom";
-
+import loader from "../assets/loader.gif";
 export default class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      isLoaded: false,
+      items: [],
+      isLoadedCategory: false,
+      categoryData: [],
+    };
+  }
+
+  componentDidMount() {
+    // Set Loader Init Value
+    this.setState({
+      isLoaded: true,
+      isLoadedCategory: true,
+    });
+    // Fetch Top News
+    const fetchTopNew = async () => {
+      fetch(
+        `${process.env.REACT_APP_API_URL}?order-by=newest&show-fields=headline,trailText,thumbnail&page-size=9&api-key=${process.env.REACT_APP_API_KEY}`
+      )
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            this.setState({
+              isLoaded: false,
+              items: result.response.results,
+            });
+          },
+          (error) => {
+            this.setState({
+              isLoaded: true,
+              error,
+            });
+          }
+        );
+    };
+
+    // Category wise Fetch News SPORTS
+    const fetchSports = async () => {
+      fetch(
+        `${process.env.REACT_APP_API_URL}?section=sport&order-by=newest&show-fields=headline,trailText,thumbnail&page-size=3&api-key=${process.env.REACT_APP_API_KEY}`
+      )
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            this.setState({
+              isLoadedCategory: false,
+              categoryData: result.response.results,
+            });
+          },
+          (error) => {
+            this.setState({
+              isLoadedCategory: true,
+              error,
+            });
+          }
+        );
+    };
+
+    // Fetch Top News
+    fetchTopNew();
+    // Fetch Sports Category
+    fetchSports();
+  }
+
   render() {
-    const media =
-      "https://www.bbc.co.uk/news/special/2015/newsspec_10857/bbc_news_logo.png?cb=1";
-    const mediaTitle =
-      "The wrong criticism of his performance is to say that he has made mistakes";
-    const mediaDesc =
-      " Confronted with a novel disease for which the country was unprepared, any prime minister would have made errors. The correct criticism is that he has failed to learn from his mistakes and egregiously repeated them";
+    const {
+      error,
+      isLoaded,
+      items,
+      categoryData,
+      isLoadedCategory,
+    } = this.state;
 
     return (
       <div className="App-cotainer">
@@ -19,10 +87,9 @@ export default class Home extends Component {
           <div className="container-header-right">
             <Link to="/allbookmark">
               <button className="bookmark">
-                <i class="fa fa-bookmark"></i>View Bookmark
+                <i className="fa fa-bookmark"></i>View Bookmark
               </button>
             </Link>
-
             <select className="select-article-type">
               <option value="">Newest first</option>
               <option value="">Oldest first</option>
@@ -32,75 +99,77 @@ export default class Home extends Component {
         </div>
         <div className="container">
           <div className="container-left">
-            <Article
-              media={media}
-              mediaTitle={mediaTitle}
-              mediaDesc={mediaDesc}
-            />
+            {items.slice(0, 1).map((item) => (
+              <Article
+                key={item.id}
+                mediaTitle={item.fields.headline}
+                mediaDesc={item.fields.trailText}
+                media={item.fields.thumbnail}
+              />
+            ))}
           </div>
           <div className="container-right">
-            <div className="col-6">
-              <Article
-                media={media}
-                mediaTitle={mediaTitle}
-                mediaDesc={mediaDesc}
-              />
-            </div>
-            <div className="col-6">
-              <Article
-                media={media}
-                mediaTitle={mediaTitle}
-                mediaDesc={mediaDesc}
-              />
-            </div>
-            <div className="col-6">
-              <Article mediaTitle={mediaTitle} />
-            </div>
-            <div className="col-6">
-              <Article mediaTitle={mediaTitle} />
-            </div>
+            {items.slice(1, 3).map((item) => (
+              <div className="col-6">
+                <Article
+                  key={item.id}
+                  mediaTitle={item.fields.headline}
+                  media={item.fields.thumbnail}
+                  height={"300px"}
+                />
+              </div>
+            ))}
+
+            {items.slice(4, 6).map((item) => (
+              <div className="col-6">
+                <Article key={item.id} mediaTitle={item.fields.headline} />
+              </div>
+            ))}
           </div>
         </div>
         <div className="container-wrapper">
-          <div className="col-4">
-            <Article
-              media={media}
-              mediaTitle={mediaTitle}
-              mediaDesc={mediaDesc}
-            />
-          </div>
-          <div className="col-4">
-            <Article
-              media={media}
-              mediaTitle={mediaTitle}
-              mediaDesc={mediaDesc}
-            />
-          </div>
-          <div className="col-4">
-            <Article
-              media={media}
-              mediaTitle={mediaTitle}
-              mediaDesc={mediaDesc}
-            />
-          </div>
+          {isLoaded ? (
+            <span className="loading">
+              <img src={loader} />
+            </span>
+          ) : null}
+
+          {items.slice(6, 9).map((item) => (
+            <div className="col-4" key={item.id}>
+              <Article
+                key={item.id}
+                mediaTitle={item.fields.headline}
+                mediaDesc={item.fields.trailText}
+                media={item.fields.thumbnail}
+              />
+              {/* {item.sectionId} */}
+            </div>
+          ))}
         </div>
         <div className="container-category">
           <div className="category-header">
             <h2>Sports</h2>
             <div className="see-more">
-              <a href="#">See All</a>
+              <a href="#">See All {isLoadedCategory}</a>
             </div>
           </div>
           <div className="container-wrapper">
-            <div className="col-4">
-              <Article media={media} mediaTitle={mediaTitle} />
-            </div>
-            <div className="col-4">
-              <Article media={media} mediaTitle={mediaTitle} />
-            </div>
-            <div className="col-4">
-              <Article media={media} mediaTitle={mediaTitle} />
-            </div>
+            {isLoadedCategory ? (
+              <span className="loading">
+                <img src={loader} />
+              </span>
+            ) : null}
+
+            {categoryData.map((item) => (
+              <div className="col-4">
+                <Article
+                  key={item.id}
+                  mediaTitle={item.fields.headline}
+                  mediaDesc={item.fields.trailText}
+                  media={item.fields.thumbnail}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>

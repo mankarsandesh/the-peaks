@@ -3,7 +3,15 @@ html {
   padding: 0;
   width: 100%;
 }
-
+.loading {
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
+  margin-top: 200px;
+}
+.loading img {
+  width: 100px;
+}
 /* Home Page / Search page / */
 .App-cotainer {
   height: auto;
@@ -60,6 +68,8 @@ html {
   display: flex;
   flex-wrap: wrap;
   margin-top: 10px;
+  min-height: 400px;
+  height: 100%;
 }
 .container-category .category-header {
   display: flex;
@@ -122,16 +132,10 @@ html {
   border-right: none;
 }
 
-
 /* SMARTPHONES PORTRAIT */
 @media (min-width: 320px) and (max-width: 480px) {
-  
 }
-
-
 
 /* TABLET LANDSCAPE / DESKTOP */
 @media only screen and (min-width: 1024px) {
-
-
 }
