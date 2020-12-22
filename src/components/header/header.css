@@ -89,14 +89,8 @@
   .blue {
     border-bottom: 3px solid #2296f3;
   }
+ 
 
-
-  /* SMARTPHONES PORTRAIT */
-  @media only screen and (min-width: 300px) {
-    .header-search{
-      display: none;
-    }
-  }
   /* SMARTPHONES LANDSCAPE */
   @media only screen and (min-width: 480px) {
     /* For desktop: */
@@ -111,7 +105,7 @@
     .col-9 {width: 75%;}
     .col-10 {width: 83.33%;}
     .col-11 {width: 91.66%;}
-    .col-12 {width: 100%;}
+    .col-mobile-12 {width: 100%;}
   }
   
   /* TABLETS PORTRAIT */
@@ -131,10 +125,4 @@
       .col-12 {width: 100%;}
   }
   
-  
-  /* TABLET LANDSCAPE / DESKTOP */
-  @media only screen and (min-width: 1024px) {
-  
-  
-  }
   

@@ -20,7 +20,7 @@ export default class Articles extends Component {
           </Link>
         </div>
         <div className="container-aricle">
-          <div className="col-6">
+          <div className=" col-6 col-mobile-12">
             <p className="article-date">FRI 12 JUN 2020 06:40 BST</p>
             <h1>{mediaTitle}</h1>
             <h3>{mediaDesc}</h3>
@@ -81,7 +81,7 @@ export default class Articles extends Component {
               </p>
             </div>
           </div>
-          <div className="col-6">
+          <div className="col-6 col-mobile-12">
             <div className="article-right">
               <div className="article-img">
                 <img src={media} alt="Banner" />

@@ -18,7 +18,7 @@ export default class Category extends Component {
             <div className="container-header-right">
             <Link to="/allbookmark">
               <button className="bookmark">
-                <i class="fa fa-bookmark"></i>View Bookmark
+                <i className="fa fa-bookmark"></i>View Bookmark
               </button>
             </Link>
             <select className="search">

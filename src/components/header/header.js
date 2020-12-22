@@ -32,7 +32,7 @@ export default class Header extends Component {
                 this.setState({ showMenu: !this.state.showMenu });
               }}
             >
-              <i class="fa fa-bars"></i>
+              <i className="fa fa-bars"></i>
             </button>
             {/* For Desktop */}
               <ul className="header-menu-nav">

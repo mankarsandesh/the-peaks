@@ -55,6 +55,9 @@ Big Screen 24 Inch
   */
 
 @media (min-width: 320px) and (max-width: 480px) {
+  .header-search{
+    display: none;
+  }
   .App-header {
     background-color: #0b357b;
     display: flex;
@@ -139,4 +142,18 @@ Big Screen 24 Inch
     flex-wrap: wrap;
     align-self: auto;
   }
+  .container-aricle{
+    padding: 8px;
+    flex-direction: column;
+  }
+  .col-mobile-12{
+    width: 100% !important;
+  }
+  .article-right img{
+    margin-top: 0px;
+  }
+
+ 
+
+
 }

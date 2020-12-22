@@ -24,63 +24,63 @@ export default class Category extends Component {
             </select>
           </div>
           <div className="container-wrapper">
-            <div className="col-3">
+            <div className="col-4">
               <Article
                 media={media}
                 mediaTitle={mediaTitle}
                 mediaDesc={mediaDesc}
               />
             </div>
-            <div className="col-3">
+            <div className="col-4">
               <Article
                 media={media}
                 mediaTitle={mediaTitle}
                 mediaDesc={mediaDesc}
               />
             </div>
-            <div className="col-3">
+            <div className="col-4">
               <Article
                 media={media}
                 mediaTitle={mediaTitle}
                 mediaDesc={mediaDesc}
               />
             </div>
-            <div className="col-3">
+            <div className="col-4">
               <Article
                 media={media}
                 mediaTitle={mediaTitle}
                 mediaDesc={mediaDesc}
               />
             </div>
-            <div className="col-3">
+            <div className="col-4">
               <Article
                 media={media}
                 mediaTitle={mediaTitle}
                 mediaDesc={mediaDesc}
               />
             </div>
-            <div className="col-3">
+            <div className="col-4">
               <Article
                 media={media}
                 mediaTitle={mediaTitle}
                 mediaDesc={mediaDesc}
               />
             </div>
-            <div className="col-3">
+            <div className="col-4">
               <Article
                 media={media}
                 mediaTitle={mediaTitle}
                 mediaDesc={mediaDesc}
               />
             </div>
-            <div className="col-3">
+            <div className="col-4">
               <Article
                 media={media}
                 mediaTitle={mediaTitle}
                 mediaDesc={mediaDesc}
               />
             </div>
-            <div className="col-3">
+            <div className="col-4">
               <Article
                 media={media}
                 mediaTitle={mediaTitle}
