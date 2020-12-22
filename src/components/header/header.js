@@ -10,6 +10,7 @@ export default class Header extends Component {
     super();
     this.state = {
       showInput: false,
+      showMenu: false,
     };
   }
 
@@ -17,26 +18,39 @@ export default class Header extends Component {
     return (
       <div className="App-header">
         <div className="header">
+          
+          <div className="logo">
           <Link to="/">
             <img src={logo} className="logo" alt="Logo" />{" "}
           </Link>
-          
+          </div>
+
           <div className="header-menu">
-            <button className="header-menu-drop"> <i class="fa fa-bars"></i> </button>
-            <ul className="header-menu-nav">
-              <Link to="/">
-                <li className="green"> News Today </li>
-              </Link>
-              <Link to="/category/sports">
-                <li className="red">Sports</li>
-              </Link>
-              <Link to="/category/culture">
-                <li className="yellow">Culture</li>
-              </Link>
-              <Link to="/category/lifestyle">
-                <li className="blue">Lifestyle</li>
-              </Link>
-            </ul>
+            <button
+              className="header-menu-drop"
+              onClick={() => {
+                this.setState({ showMenu: !this.state.showMenu });
+              }}
+            >
+              <i class="fa fa-bars"></i>
+            </button>
+            {/* For Desktop */}
+              <ul className="header-menu-nav">
+                <Link to="/">
+                  <li className="green"> News Today </li>
+                </Link>
+                <Link to="/category/sports">
+                  <li className="red">Sports</li>
+                </Link>
+                <Link to="/category/culture">
+                  <li className="yellow">Culture</li>
+                </Link>
+                <Link to="/category/lifestyle">
+                  <li className="blue">Lifestyle</li>
+                </Link>
+              </ul>
+              
+            
             <div className="header-search">
               <i
                 className="fa fa-search"
@@ -49,7 +63,28 @@ export default class Header extends Component {
               ) : null}
             </div>
           </div>
+          
         </div>
+       
+        {this.state.showMenu ? (
+               <div className="header-menu-mobile">
+              <ul className="header-menu-nav-mobile">
+                <Link to="/">
+                  <li className="green"> News Today </li>
+                </Link>
+                <Link to="/category/sports">
+                  <li className="red">Sports</li>
+                </Link>
+                <Link to="/category/culture">
+                  <li className="yellow">Culture</li>
+                </Link>
+                <Link to="/category/lifestyle">
+                  <li className="blue">Lifestyle</li>
+                </Link>
+              </ul>
+              </div>  
+            ) : null}
+            
       </div>
     );
   }
