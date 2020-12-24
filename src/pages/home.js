@@ -12,63 +12,77 @@ export default class Home extends Component {
       items: [],
       isLoadedCategory: false,
       categoryData: [],
+      selectType: "newest",
     };
+    this.selectNewsType = this.selectNewsType.bind(this);
   }
 
   componentDidMount() {
+    // Fetch Top News
+    this.fetchTopNew(this.state.selectType);
+    // Fetch Sports Category
+    this.fetchSports(this.state.selectType);
+  }
+
+  // Fetch Top News
+  fetchTopNew = async (type) => {
     // Set Loader Init Value
     this.setState({
       isLoaded: true,
+    });
+
+    fetch(
+      `${process.env.REACT_APP_API_URL}?order-by=${type}&show-fields=headline,trailText,thumbnail&page-size=9&api-key=${process.env.REACT_APP_API_KEY}`
+    )
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: false,
+            items: result.response.results,
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error,
+          });
+        }
+      );
+  };
+
+  // Category wise Fetch News SPORTS
+  fetchSports = async (type) => {
+    // Set Loader Init Value
+    this.setState({
       isLoadedCategory: true,
     });
-    // Fetch Top News
-    const fetchTopNew = async () => {
-      fetch(
-        `${process.env.REACT_APP_API_URL}?order-by=newest&show-fields=headline,trailText,thumbnail&page-size=9&api-key=${process.env.REACT_APP_API_KEY}`
-      )
-        .then((res) => res.json())
-        .then(
-          (result) => {
-            this.setState({
-              isLoaded: false,
-              items: result.response.results,
-            });
-          },
-          (error) => {
-            this.setState({
-              isLoaded: true,
-              error,
-            });
-          }
-        );
-    };
 
-    // Category wise Fetch News SPORTS
-    const fetchSports = async () => {
-      fetch(
-        `${process.env.REACT_APP_API_URL}?section=sport&order-by=newest&show-fields=headline,trailText,thumbnail&page-size=3&api-key=${process.env.REACT_APP_API_KEY}`
-      )
-        .then((res) => res.json())
-        .then(
-          (result) => {
-            this.setState({
-              isLoadedCategory: false,
-              categoryData: result.response.results,
-            });
-          },
-          (error) => {
-            this.setState({
-              isLoadedCategory: true,
-              error,
-            });
-          }
-        );
-    };
+    fetch(
+      `${process.env.REACT_APP_API_URL}?section=sport&order-by=${type}&show-fields=headline,trailText,thumbnail&page-size=3&api-key=${process.env.REACT_APP_API_KEY}`
+    )
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoadedCategory: false,
+            categoryData: result.response.results,
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoadedCategory: true,
+            error,
+          });
+        }
+      );
+  };
 
-    // Fetch Top News
-    fetchTopNew();
-    // Fetch Sports Category
-    fetchSports();
+  // Select Type
+  selectNewsType(e) {
+    this.setState({ selectType: e.target.value });
+    this.fetchTopNew(e.target.value);
+    this.fetchSports(e.target.value);
   }
 
   render() {
@@ -90,10 +104,14 @@ export default class Home extends Component {
                 <i className="fa fa-bookmark"></i>View Bookmark
               </button>
             </Link>
-            <select className="select-article-type">
-              <option value="newest">Newest News</option>
-              <option value="oldest">Oldest News</option>
-              <option value="relevance">Relevance News</option>
+            <select
+              className="search"
+              value={this.state.selectType}
+              onChange={this.selectNewsType}
+            >
+              <option value="newest">Newest first</option>
+              <option value="oldest">Oldest first</option>
+              <option value="relevance">Most Popular</option>
             </select>
           </div>
         </div>
@@ -153,7 +171,10 @@ export default class Home extends Component {
           <div className="category-header">
             <h2>Sports</h2>
             <div className="see-more">
-              <a href="#"> <Link to="/category/sport">See All </Link></a>
+              <a href="#">
+                {" "}
+                <Link to="/category/sport">See All </Link>
+              </a>
             </div>
           </div>
           <div className="container-wrapper">

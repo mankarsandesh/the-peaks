@@ -6,7 +6,7 @@ export default class article extends Component {
   constructor() {
     super();
     this.state = {
-      articleLimit: 100,
+      articleDefaultLimit: 100,
     };
   }
   render() {
@@ -21,7 +21,7 @@ export default class article extends Component {
               <img src={this.props.media} width="100%" />
             ) : null}
             <div className="post-content">
-              <h2>{this.props.mediaTitle.substring(0, this.state.articleLimit)}</h2>
+              <h2>{this.props.mediaTitle.substring(0, this.props.articleLimit ? this.props.articleLimit : this.state.articleDefaultLimit )}</h2>
               {this.props.mediaDesc ? (
                 <p>{this.props.mediaDesc.substring(0, 100)}</p>
               ) : null}

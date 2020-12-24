@@ -61,7 +61,6 @@ class Category extends Component {
     this.setState({ selectType: e.target.value });
     this.fetchCategorywiseNews(this.props.match.params.name, e.target.value);
   }
-
   render() {
     const {
       categoryName,
@@ -100,6 +99,7 @@ class Category extends Component {
                   key={item.id}
                   mediaTitle={item.fields.headline}
                   media={item.fields.thumbnail}
+                  articleLimit="200"
                 />
               </div>
             ))}
