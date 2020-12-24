@@ -7,6 +7,9 @@
     border-bottom: 4px solid green;
     padding: 0px;
   }
+  .contaner-post a{
+    text-decoration: none;
+  }
   .post-content {
     color: #fff;
     margin: 0px 10px;

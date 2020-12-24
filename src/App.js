@@ -17,10 +17,11 @@ export default class App extends Component {
 
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/category/" component={Category} />
+          <Route path="/category/:name" component={Category} />
           <Route path="/allbookmark/" component={Bookmark} />
           <Route path="/search/" component={Search} />
           <Route path="/article/" component={Articles} />
+          
         </Switch>
         <Footer />
       </Router>

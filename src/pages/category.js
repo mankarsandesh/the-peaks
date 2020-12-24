@@ -1,96 +1,113 @@
 import React, { Component } from "react";
 import Article from "../components/article/article";
+import loader from "../assets/loader.gif";
 
-export default class Category extends Component {
+class Category extends Component {
+  constructor() {
+    super();
+    this.state = {
+      categoryName: "",
+      isLoadedCategory: false,
+      categoryData: [],
+      selectType: "newest",
+    };
+    this.selectNewsType = this.selectNewsType.bind(this);
+  }
+
+  // Category wise Fetch News
+  fetchCategorywiseNews(category, type) {
+    // Set  Init Value
+    this.setState({ isLoadedCategory: true, categoryData: [] });
+    fetch(
+      `${process.env.REACT_APP_API_URL}?section=${category}&order-by=${type}&show-fields=headline,trailText,thumbnail&page-size=9&api-key=${process.env.REACT_APP_API_KEY}`
+    )
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoadedCategory: false,
+            categoryData: result.response.results,
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoadedCategory: true,
+            error,
+          });
+        }
+      );
+  }
+  // Compent Mount
+  componentDidMount() {
+    this.setState({ categoryName: this.props.match.params.name });
+    this.fetchCategorywiseNews(
+      this.props.match.params.name,
+      this.state.selectType
+    );
+  }
+
+  // When Compoment Update Search Category Wise Data
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params !== this.props.match.params) {
+      this.fetchCategorywiseNews(
+        this.props.match.params.name,
+        this.state.selectType
+      );
+      this.setState({ categoryName: this.props.match.params.name });
+    }
+  }
+  // Select Type
+  selectNewsType(e) {
+    this.setState({ selectType: e.target.value });
+    this.fetchCategorywiseNews(this.props.match.params.name, e.target.value);
+  }
+
   render() {
-    const media =
-      "https://www.bbc.co.uk/news/special/2015/newsspec_10857/bbc_news_logo.png?cb=1";
-    const mediaTitle =
-      "The wrong criticism of his performance is to say that he has made mistakes";
-    const mediaDesc =
-      " Confronted with a novel disease for which the country was unprepared, any prime minister would have made errors. The correct criticism is that he has failed to learn from his mistakes and egregiously repeated them";
+    const {
+      categoryName,
+      categoryData,
+      isLoadedCategory,
+      selectType,
+    } = this.state;
 
     return (
       <div className="App-cotainer">
         <div className="container-category">
           <div className="category-header">
-            <h1>Sports </h1>
+            <h1>{categoryName} </h1>
             <div className="container-header-right">
-            <select className="search">
-              <option value="">Select Options</option>
-              <option value="">Newest first</option>
-              <option value="">Oldest first</option>
-              <option value="">Most Popular</option>
-            </select>
+              <select
+                className="search"
+                value={this.state.selectType}
+                onChange={this.selectNewsType}
+              >
+                <option value="newest">Newest first</option>
+                <option value="oldest">Oldest first</option>
+                <option value="relevance">Most Popular</option>
+              </select>
             </div>
           </div>
           <div className="container-wrapper">
-            <div className="col-4">
-              <Article
-                media={media}
-                mediaTitle={mediaTitle}
-                mediaDesc={mediaDesc}
-              />
-            </div>
-            <div className="col-4">
-              <Article
-                media={media}
-                mediaTitle={mediaTitle}
-                mediaDesc={mediaDesc}
-              />
-            </div>
-            <div className="col-4">
-              <Article
-                media={media}
-                mediaTitle={mediaTitle}
-                mediaDesc={mediaDesc}
-              />
-            </div>
-            <div className="col-4">
-              <Article
-                media={media}
-                mediaTitle={mediaTitle}
-                mediaDesc={mediaDesc}
-              />
-            </div>
-            <div className="col-4">
-              <Article
-                media={media}
-                mediaTitle={mediaTitle}
-                mediaDesc={mediaDesc}
-              />
-            </div>
-            <div className="col-4">
-              <Article
-                media={media}
-                mediaTitle={mediaTitle}
-                mediaDesc={mediaDesc}
-              />
-            </div>
-            <div className="col-4">
-              <Article
-                media={media}
-                mediaTitle={mediaTitle}
-                mediaDesc={mediaDesc}
-              />
-            </div>
-            <div className="col-4">
-              <Article
-                media={media}
-                mediaTitle={mediaTitle}
-                mediaDesc={mediaDesc}
-              />
-            </div>
-            <div className="col-4">
-              <Article
-                media={media}
-                mediaTitle={mediaTitle}
-                mediaDesc={mediaDesc}
-              />
-            </div>
+            {isLoadedCategory ? (
+              <span className="loading">
+                <img src={loader} />
+              </span>
+            ) : null}
+
+            {categoryData.map((item) => (
+              <div className="col-4" key={item.id}>
+                <Article
+                  key={item.id}
+                  mediaTitle={item.fields.headline}
+                  media={item.fields.thumbnail}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>
     );
   }
 }
+
+export default Category;

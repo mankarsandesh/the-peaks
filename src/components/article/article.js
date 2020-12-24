@@ -3,6 +3,12 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 export default class article extends Component {
+  constructor() {
+    super();
+    this.state = {
+      articleLimit: 100,
+    };
+  }
   render() {
     return (
       <div className="container-wrap">
@@ -15,7 +21,7 @@ export default class article extends Component {
               <img src={this.props.media} width="100%" />
             ) : null}
             <div className="post-content">
-              <h2>{this.props.mediaTitle.substring(0, 100)}</h2>
+              <h2>{this.props.mediaTitle.substring(0, this.state.articleLimit)}</h2>
               {this.props.mediaDesc ? (
                 <p>{this.props.mediaDesc.substring(0, 100)}</p>
               ) : null}

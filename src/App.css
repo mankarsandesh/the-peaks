@@ -80,6 +80,7 @@ html {
 .container-category .category-header h1 {
   font-size: 28px;
   margin: 0px;
+  text-transform: capitalize;
 }
 .container-category .category-header .see-more a {
   color: #2296f3;

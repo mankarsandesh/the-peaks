@@ -91,9 +91,9 @@ export default class Home extends Component {
               </button>
             </Link>
             <select className="select-article-type">
-              <option value="">Newest first</option>
-              <option value="">Oldest first</option>
-              <option value="">Most Popular</option>
+              <option value="newest">Newest News</option>
+              <option value="oldest">Oldest News</option>
+              <option value="relevance">Relevance News</option>
             </select>
           </div>
         </div>
@@ -101,7 +101,7 @@ export default class Home extends Component {
           <div className="container-left">
             {items.slice(0, 1).map((item) => (
               <Article
-                key={item.id}
+                key={item.fields.id}
                 mediaTitle={item.fields.headline}
                 mediaDesc={item.fields.trailText}
                 media={item.fields.thumbnail}
@@ -112,7 +112,7 @@ export default class Home extends Component {
             {items.slice(1, 3).map((item) => (
               <div className="col-6">
                 <Article
-                  key={item.id}
+                  key={item.fields.id}
                   mediaTitle={item.fields.headline}
                   media={item.fields.thumbnail}
                   height={"300px"}
@@ -122,7 +122,10 @@ export default class Home extends Component {
 
             {items.slice(4, 6).map((item) => (
               <div className="col-6">
-                <Article key={item.id} mediaTitle={item.fields.headline} />
+                <Article
+                  key={item.fields.id}
+                  mediaTitle={item.fields.headline}
+                />
               </div>
             ))}
           </div>
@@ -135,9 +138,9 @@ export default class Home extends Component {
           ) : null}
 
           {items.slice(6, 9).map((item) => (
-            <div className="col-4" key={item.id}>
+            <div className="col-4">
               <Article
-                key={item.id}
+                key={item.fields.id}
                 mediaTitle={item.fields.headline}
                 mediaDesc={item.fields.trailText}
                 media={item.fields.thumbnail}
@@ -150,7 +153,7 @@ export default class Home extends Component {
           <div className="category-header">
             <h2>Sports</h2>
             <div className="see-more">
-              <a href="#">See All {isLoadedCategory}</a>
+              <a href="#"> <Link to="/category/sport">See All </Link></a>
             </div>
           </div>
           <div className="container-wrapper">
@@ -163,7 +166,7 @@ export default class Home extends Component {
             {categoryData.map((item) => (
               <div className="col-4">
                 <Article
-                  key={item.id}
+                  key={item.fields.id}
                   mediaTitle={item.fields.headline}
                   mediaDesc={item.fields.trailText}
                   media={item.fields.thumbnail}

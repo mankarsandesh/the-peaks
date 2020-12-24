@@ -38,13 +38,13 @@ export default class Header extends Component {
               <Link to="/">
                 <li className="green"> News Today </li>
               </Link>
-              <Link to="/category/sports">
+              <Link to="/category/sport">
                 <li className="red">Sports</li>
               </Link>
               <Link to="/category/culture">
                 <li className="yellow">Culture</li>
               </Link>
-              <Link to="/category/lifestyle">
+              <Link to="/category/lifeandstyle">
                 <li className="blue">Lifestyle</li>
               </Link>
             </ul>
