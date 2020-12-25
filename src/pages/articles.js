@@ -31,7 +31,6 @@ class Articles extends Component {
             isLoaded: false,
             newsData: result.response.content.fields,
           });
-          console.log(result);
         },
         (error) => {
           this.setState({
@@ -71,7 +70,7 @@ class Articles extends Component {
             <h1> {newsData.headline} </h1>
             <h3> {newsData.byline} </h3>
             <hr />
-            <div className="article-description">
+            <div className="article-description" >
               <p>{ReactHtmlParser(newsData.body)}</p>
             </div>
           </div>
