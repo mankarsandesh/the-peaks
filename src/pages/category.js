@@ -97,6 +97,7 @@ class Category extends Component {
               <div className="col-4" key={item.id}>
                 <Article
                   key={item.id}
+                  articleURL={item.id}
                   mediaTitle={item.fields.headline}
                   media={item.fields.thumbnail}
                   articleLimit="200"

@@ -123,6 +123,7 @@ export default class Home extends Component {
                 mediaTitle={item.fields.headline}
                 mediaDesc={item.fields.trailText}
                 media={item.fields.thumbnail}
+                articleURL={item.id}
               />
             ))}
           </div>
@@ -133,6 +134,7 @@ export default class Home extends Component {
                   key={item.fields.id}
                   mediaTitle={item.fields.headline}
                   media={item.fields.thumbnail}
+                  articleURL={item.id}
                   height={"300px"}
                 />
               </div>
@@ -143,6 +145,7 @@ export default class Home extends Component {
                 <Article
                   key={item.fields.id}
                   mediaTitle={item.fields.headline}
+                  articleURL={item.id}
                 />
               </div>
             ))}
@@ -161,6 +164,7 @@ export default class Home extends Component {
                 key={item.fields.id}
                 mediaTitle={item.fields.headline}
                 mediaDesc={item.fields.trailText}
+                articleURL={item.id}
                 media={item.fields.thumbnail}
               />
               {/* {item.sectionId} */}
@@ -190,6 +194,7 @@ export default class Home extends Component {
                   key={item.fields.id}
                   mediaTitle={item.fields.headline}
                   mediaDesc={item.fields.trailText}
+                  articleURL={item.id}
                   media={item.fields.thumbnail}
                 />
               </div>

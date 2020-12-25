@@ -123,6 +123,10 @@ html {
 .container-aricle .article-description {
   font-size: 14px;
 }
+.container-aricle .article-description img {
+  width: 500px;
+  height: 100%;
+}
 
 .select-article-type {
   border-bottom: 1px solid #333;

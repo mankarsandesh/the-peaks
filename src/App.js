@@ -20,7 +20,7 @@ export default class App extends Component {
           <Route path="/category/:name" component={Category} />
           <Route path="/allbookmark/" component={Bookmark} />
           <Route path="/search/" component={Search} />
-          <Route path="/article/" component={Articles} />
+          <Route path="/article/:newsId" component={Articles} />
           
         </Switch>
         <Footer />

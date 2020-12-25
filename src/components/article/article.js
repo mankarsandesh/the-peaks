@@ -9,6 +9,7 @@ export default class article extends Component {
       articleDefaultLimit: 100,
     };
   }
+
   render() {
     return (
       <div className="container-wrap">
@@ -16,12 +17,19 @@ export default class article extends Component {
           className="contaner-post"
           style={{ minHeight: this.props.height || `100%` }}
         >
-          <Link to="/article">
+          <Link to={`/article/${this.props.articleURL}`}>
             {this.props.media ? (
               <img src={this.props.media} width="100%" />
             ) : null}
             <div className="post-content">
-              <h2>{this.props.mediaTitle.substring(0, this.props.articleLimit ? this.props.articleLimit : this.state.articleDefaultLimit )}</h2>
+              <h2>
+                {this.props.mediaTitle.substring(
+                  0,
+                  this.props.articleLimit
+                    ? this.props.articleLimit
+                    : this.state.articleDefaultLimit
+                )}
+              </h2>
               {this.props.mediaDesc ? (
                 <p>{this.props.mediaDesc.substring(0, 100)}</p>
               ) : null}
