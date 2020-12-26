@@ -14,6 +14,7 @@ class Articles extends Component {
     this.state = {
       isLoaded: false,
       newsData: [],
+      isBookmark: false,
     };
   }
 
@@ -42,21 +43,56 @@ class Articles extends Component {
   }
   // Compent Mount
   componentDidMount() {
-    const newsID = this.props.location.pathname.replace("/article", "");
+    var newsID = this.props.location.pathname.replace("/article/", "");
     this.fetchNewsData(newsID);
+    var myBookmark = JSON.parse(localStorage.getItem("myBookmark") || "[]");
+    if (myBookmark.indexOf(newsID) == 1) {
+      this.setState({
+        isBookmark: false,
+      });
+    }
   }
-
+  // Add Bookmark
+  addBookmark() {
+    const newsID = this.props.location.pathname.replace("/article/", ""); 
+    var myBookmark = JSON.parse(localStorage.getItem("myBookmark") || "[]");
+    if (myBookmark.indexOf(newsID) == -1) {
+      myBookmark.push(newsID);
+      localStorage.setItem("myBookmark", JSON.stringify(myBookmark));
+      this.setState({
+        isBookmark: false,
+      });
+    }
+  }
+  // Remvoe Bookmark
+  removeBookmrk() {
+    const newsID = this.props.location.pathname.replace("/article/", "");
+    const myBookmark = JSON.parse(localStorage.getItem("myBookmark"));
+    for (var i = 0; i < myBookmark.length; i++) {
+      if (myBookmark[i] === newsID) {
+        myBookmark.splice(i, 1);
+      }
+    }
+    this.setState({
+      isBookmark: true,
+    });
+    localStorage.setItem("myBookmark", JSON.stringify(myBookmark));
+  }
   render() {
-    const { newsData, isLoaded } = this.state;
+    const { newsData, isLoaded, isBookmark } = this.state;
 
     return (
       <div className="App-cotainer">
         <div className="container-header">
-          <Link to="/allbookmark">
-            <button className="bookmark">
+          {isBookmark ? (
+            <button className="bookmark" onClick={() => this.addBookmark()}>
               <i className="fa fa-bookmark"></i>Add Bookmark
             </button>
-          </Link>
+          ) : (
+            <button className="bookmark" onClick={() => this.removeBookmrk()}>
+              <i className="fa fa-bookmark"></i>Remove Bookmark
+            </button>
+          )}
         </div>
 
         {isLoaded ? (
@@ -71,7 +107,7 @@ class Articles extends Component {
               <h3> {newsData.byline} </h3>
               <hr />
               <div className="article-description">
-                <p>{ReactHtmlParser(newsData.body)}</p>
+                {ReactHtmlParser(newsData.body)}
               </div>
             </div>
             <div className="col-6 col-mobile-12">
