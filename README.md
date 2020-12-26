@@ -19,6 +19,10 @@
 3. Category Page - Done
 4. Search Page  - Done
 
-
+# Functionlity Wise - Done
+1. Home Page
+2. Category page 
+3. Add Bookmark 
+4. Single Article Page
 
 

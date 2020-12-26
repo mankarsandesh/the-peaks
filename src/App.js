@@ -21,7 +21,6 @@ export default class App extends Component {
           <Route path="/allbookmark/" component={Bookmark} />
           <Route path="/search/" component={Search} />
           <Route path="/article/:newsId" component={Articles} />
-          
         </Switch>
         <Footer />
       </Router>

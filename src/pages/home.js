@@ -41,7 +41,6 @@ export default class Home extends Component {
             isLoaded: false,
             items: result.response.results,
           });
-          console.log(result);
         },
         (error) => {
           this.setState({
