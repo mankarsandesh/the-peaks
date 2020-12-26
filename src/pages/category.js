@@ -28,6 +28,7 @@ class Category extends Component {
             isLoadedCategory: false,
             categoryData: result.response.results,
           });
+          console.log(result);
         },
         (error) => {
           this.setState({
@@ -101,6 +102,7 @@ class Category extends Component {
                   mediaTitle={item.fields.headline}
                   media={item.fields.thumbnail}
                   articleLimit="200"
+                  type={item.sectionId}
                 />
               </div>
             ))}

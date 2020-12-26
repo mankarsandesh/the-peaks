@@ -41,6 +41,7 @@ export default class Home extends Component {
             isLoaded: false,
             items: result.response.results,
           });
+          console.log(result);
         },
         (error) => {
           this.setState({
@@ -124,8 +125,11 @@ export default class Home extends Component {
                 mediaDesc={item.fields.trailText}
                 media={item.fields.thumbnail}
                 articleURL={item.id}
+                type={item.sectionId}
               />
+             
             ))}
+          
           </div>
           <div className="container-right">
             {items.slice(1, 3).map((item) => (
@@ -166,8 +170,9 @@ export default class Home extends Component {
                 mediaDesc={item.fields.trailText}
                 articleURL={item.id}
                 media={item.fields.thumbnail}
+                articleLimit="70"
+                type={item.sectionId}
               />
-              {/* {item.sectionId} */}
             </div>
           ))}
         </div>
@@ -193,9 +198,10 @@ export default class Home extends Component {
                 <Article
                   key={item.fields.id}
                   mediaTitle={item.fields.headline}
-                  mediaDesc={item.fields.trailText}
                   articleURL={item.id}
                   media={item.fields.thumbnail}
+                  articleLimit="200"
+                  type={item.sectionId}
                 />
               </div>
             ))}

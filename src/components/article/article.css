@@ -1,31 +1,43 @@
-
 .contaner-post {
-    background-color: #0b357b;
-    box-shadow: 2px 3px 8px #888888;
-    width: 100% !important;  
-    float: left;
-    border-bottom: 4px solid green;
-    padding: 0px;
-  }
-  .contaner-post a{
-    text-decoration: none;
-  }
-  .post-content {
-    color: #fff;
-    margin: 0px 10px;
-    padding: 8px;
-    height: 100px;
-  }
-  .post-content h2 {
-    margin: 0px;
-    padding: 0px;
-    font-size: 20px;
-  }
-  .post-content p {
-    margin: 5px 0px;
-    font-size: 14px;
-  }
-  .container-wrap{
-    display: flex;
-    padding: 10px;
-  }
+  background-color: #0b357b;
+  box-shadow: 2px 3px 8px #888888;
+  width: 100% !important;
+  float: left;
+  border-bottom: 4px solid green;
+  padding: 0px;
+}
+.categopry-sport {
+  border-bottom: 3px solid #f60257 !important;
+}
+.categopry-culture {
+  border-bottom: 3px solid #ffca26 !important;
+}
+.categopry-lifeandstyle {
+  border-bottom: 3px solid #2296f3 !important;
+}
+.categopry-news {
+  border-bottom: 4px solid green !important;
+}
+
+.contaner-post a {
+  text-decoration: none;
+}
+.post-content {
+  color: #fff;
+  margin: 0px 10px;
+  padding: 8px;
+  height: 100px;
+}
+.post-content h2 {
+  margin: 0px;
+  padding: 0px;
+  font-size: 20px;
+}
+.post-content p {
+  margin: 5px 0px;
+  font-size: 14px;
+}
+.container-wrap {
+  display: flex;
+  padding: 10px;
+}
