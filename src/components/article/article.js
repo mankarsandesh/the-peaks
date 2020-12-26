@@ -1,11 +1,7 @@
 import "./article.css";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import ReactHtmlParser, {
-  processNodes,
-  convertNodeToElement,
-  htmlparser2,
-} from "react-html-parser";
+import ReactHtmlParser from "react-html-parser";
 export default class article extends Component {
   constructor() {
     super();
@@ -24,7 +20,7 @@ export default class article extends Component {
           
           <Link to={`/article/${this.props.articleURL}`}>
             {this.props.media ? (
-              <img src={this.props.media} width="100%" />
+              <img src={this.props.media} width="100%" alt="Media" />
             ) : null}
             <div className="post-content">
               <h2>

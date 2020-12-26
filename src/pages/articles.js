@@ -1,12 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import loader from "../assets/loader.gif";
 
-import ReactHtmlParser, {
-  processNodes,
-  convertNodeToElement,
-  htmlparser2,
-} from "react-html-parser";
+import ReactHtmlParser from "react-html-parser";
 
 class Articles extends Component {
   constructor() {
@@ -97,7 +92,7 @@ class Articles extends Component {
 
         {isLoaded ? (
           <span className="loading">
-            <img src={loader} />
+            <img src={loader} alt="Loader"/>
           </span>
         ) : (
           <div className="container-aricle">

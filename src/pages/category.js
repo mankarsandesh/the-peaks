@@ -90,7 +90,7 @@ class Category extends Component {
           <div className="container-wrapper">
             {isLoadedCategory ? (
               <span className="loading">
-                <img src={loader} />
+                <img src={loader} alt="Loader"/>
               </span>
             ) : null}
 
