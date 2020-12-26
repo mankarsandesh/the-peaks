@@ -58,31 +58,32 @@ class Articles extends Component {
             </button>
           </Link>
         </div>
-        <div className="container-aricle">
-          <div className=" col-6 col-mobile-12">
-            {isLoaded ? (
-              <span className="loading">
-                <img src={loader} />
-              </span>
-            ) : null}
 
-            <p className="article-date">{newsData.firstPublicationDate}</p>
-            <h1> {newsData.headline} </h1>
-            <h3> {newsData.byline} </h3>
-            <hr />
-            <div className="article-description" >
-              <p>{ReactHtmlParser(newsData.body)}</p>
+        {isLoaded ? (
+          <span className="loading">
+            <img src={loader} />
+          </span>
+        ) : (
+          <div className="container-aricle">
+            <div className=" col-6 col-mobile-12">
+              <p className="article-date">{newsData.firstPublicationDate}</p>
+              <h1> {newsData.headline} </h1>
+              <h3> {newsData.byline} </h3>
+              <hr />
+              <div className="article-description">
+                <p>{ReactHtmlParser(newsData.body)}</p>
+              </div>
             </div>
-          </div>
-          <div className="col-6 col-mobile-12">
-            <div className="article-right">
-              <div className="article-img">
-                <img src={newsData.thumbnail} alt="Banner" />
-                <p className="description">{newsData.trailText}</p>
+            <div className="col-6 col-mobile-12">
+              <div className="article-right">
+                <div className="article-img">
+                  <img src={newsData.thumbnail} alt="Banner" />
+                  <p className="description">{newsData.trailText}</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     );
   }
