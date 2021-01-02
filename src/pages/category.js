@@ -10,8 +10,10 @@ class Category extends Component {
       isLoadedCategory: false,
       categoryData: [],
       selectType: "newest",
+      articleNo : 9,
     };
     this.selectNewsType = this.selectNewsType.bind(this);
+    this.loadMore = this.loadMore.bind(this)
   }
 
   // Category wise Fetch News
@@ -19,7 +21,7 @@ class Category extends Component {
     // Set  Init Value
     this.setState({ isLoadedCategory: true, categoryData: [] });
     fetch(
-      `${process.env.REACT_APP_API_URL}?section=${category}&order-by=${type}&show-fields=headline,trailText,thumbnail&page-size=9&api-key=${process.env.REACT_APP_API_KEY}`
+      `${process.env.REACT_APP_API_URL}?section=${category}&order-by=${type}&show-fields=headline,trailText,thumbnail&page-size=${this.state.articleNo}&api-key=${process.env.REACT_APP_API_KEY}`
     )
       .then((res) => res.json())
       .then(
@@ -45,6 +47,7 @@ class Category extends Component {
       this.props.match.params.name,
       this.state.selectType
     );
+    window.addEventListener('scroll', this.loadMore);
   }
 
   // When Compoment Update Search Category Wise Data
@@ -55,6 +58,16 @@ class Category extends Component {
         this.state.selectType
       );
       this.setState({ categoryName: this.props.match.params.name });
+    }
+  }
+  // Load More 
+  loadMore(){
+    if (window.innerHeight + document.documentElement.scrollTop === document.scrollingElement.scrollHeight) {
+      this.setState({ articleNo: this.state.articleNo + 3});
+      this.fetchCategorywiseNews(
+        this.props.match.params.name,
+        this.state.selectType
+      );
     }
   }
   // Select Type
@@ -68,6 +81,7 @@ class Category extends Component {
       categoryData,
       isLoadedCategory,
       selectType,
+      articleNo
     } = this.state;
 
     return (
