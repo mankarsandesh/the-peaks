@@ -34,6 +34,7 @@ class Category extends Component {
             </select>
           </div>
           <div className="container-wrapper">
+            {booksmarkNews.length == 0 ? "There are no Bookmark." : null}
             {booksmarkNews.map((item) => (
               <div className="col-4" key={item.newsID}>
                 <Article

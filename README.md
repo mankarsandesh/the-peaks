@@ -25,7 +25,7 @@
 2. Category page  -> Done
 3. Add Bookmark  -> Done
 4. Single Article Page  -> Done
-5. View Bookmark  -> Pending
+5. View Bookmark  -> Done
 6. Search Page  -> Pending
 7. Lazy Loader -> Pending
 8. Test cases  -> Pending
