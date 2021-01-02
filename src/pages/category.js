@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import Article from "../components/article/article";
 import loader from "../assets/loader.gif";
+import LazyLoad from "react-lazyload";
 
+const Loading = () => (
+  <div className="post">
+    <h5>Loading</h5>
+  </div>
+);
 class Category extends Component {
   constructor() {
     super();
@@ -10,10 +16,10 @@ class Category extends Component {
       isLoadedCategory: false,
       categoryData: [],
       selectType: "newest",
-      articleNo : 9,
+      articleNo: 9,
     };
     this.selectNewsType = this.selectNewsType.bind(this);
-    this.loadMore = this.loadMore.bind(this)
+    this.loadMore = this.loadMore.bind(this);
   }
 
   // Category wise Fetch News
@@ -47,7 +53,7 @@ class Category extends Component {
       this.props.match.params.name,
       this.state.selectType
     );
-    window.addEventListener('scroll', this.loadMore);
+    window.addEventListener("scroll", this.loadMore);
   }
 
   // When Compoment Update Search Category Wise Data
@@ -60,10 +66,13 @@ class Category extends Component {
       this.setState({ categoryName: this.props.match.params.name });
     }
   }
-  // Load More 
-  loadMore(){
-    if (window.innerHeight + document.documentElement.scrollTop === document.scrollingElement.scrollHeight) {
-      this.setState({ articleNo: this.state.articleNo + 3});
+  // Load More
+  loadMore() {
+    if (
+      window.innerHeight + document.documentElement.scrollTop ===
+      document.scrollingElement.scrollHeight
+    ) {
+      this.setState({ articleNo: this.state.articleNo + 3 });
       this.fetchCategorywiseNews(
         this.props.match.params.name,
         this.state.selectType
@@ -81,7 +90,7 @@ class Category extends Component {
       categoryData,
       isLoadedCategory,
       selectType,
-      articleNo
+      articleNo,
     } = this.state;
 
     return (
@@ -104,20 +113,22 @@ class Category extends Component {
           <div className="container-wrapper">
             {isLoadedCategory ? (
               <span className="loading">
-                <img src={loader} alt="Loader"/>
+                <img src={loader} alt="Loader" />
               </span>
             ) : null}
 
             {categoryData.map((item) => (
               <div className="col-4" key={item.id}>
-                <Article
-                  key={item.id}
-                  articleURL={item.id}
-                  mediaTitle={item.fields.headline}
-                  media={item.fields.thumbnail}
-                  articleLimit="200"
-                  type={item.sectionId}
-                />
+                <LazyLoad key={item.id} placeholder={Loading}>
+                  <Article
+                    key={item.id}
+                    articleURL={item.id}
+                    mediaTitle={item.fields.headline}
+                    media={item.fields.thumbnail}
+                    articleLimit="200"
+                    type={item.sectionId}
+                  />
+                </LazyLoad>
               </div>
             ))}
           </div>
