@@ -14,6 +14,8 @@ export default class Header extends Component {
     };
   }
 
+ 
+
   render() {
     return (
       <div className="App-header">
@@ -57,7 +59,10 @@ export default class Header extends Component {
                 }}
               ></i>
               {this.state.showInput ? (
-                <input placeholder="Search all news" />
+                <input
+                  placeholder="Search all news"
+                 
+                />
               ) : null}
             </div>
           </div>

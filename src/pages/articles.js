@@ -27,6 +27,7 @@ class Articles extends Component {
             isLoaded: false,
             newsData: result.response.content.fields,
           });
+          console.log(result);
         },
         (error) => {
           this.setState({
@@ -41,30 +42,51 @@ class Articles extends Component {
     var newsID = this.props.location.pathname.replace("/article/", "");
     this.fetchNewsData(newsID);
     var myBookmark = JSON.parse(localStorage.getItem("myBookmark") || "[]");
-    if (myBookmark.indexOf(newsID) == 1) {
+    console.log(this.findArticles(newsID, myBookmark));
+    if (this.findArticles(newsID, myBookmark)) {
       this.setState({
         isBookmark: false,
+      });
+    } else {
+      this.setState({
+        isBookmark: true,
       });
     }
   }
   // Add Bookmark
-  addBookmark() {
-    const newsID = this.props.location.pathname.replace("/article/", ""); 
+  addBookmark(headline, image) {
+    const newsID = this.props.location.pathname.replace("/article/", "");
+    const newsData = {
+      newsID: newsID,
+      headline: headline,
+      image: image,
+    };
     var myBookmark = JSON.parse(localStorage.getItem("myBookmark") || "[]");
-    if (myBookmark.indexOf(newsID) == -1) {
-      myBookmark.push(newsID);
+    if (!this.findArticles(newsID, myBookmark)) {
+      myBookmark.push(newsData);
       localStorage.setItem("myBookmark", JSON.stringify(myBookmark));
       this.setState({
         isBookmark: false,
       });
     }
   }
+  // Find Article
+  findArticles(obj, list) {
+    var i;
+    for (i = 0; i < list.length; i++) {
+      if (list[i].newsID === obj) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   // Remvoe Bookmark
   removeBookmrk() {
     const newsID = this.props.location.pathname.replace("/article/", "");
     const myBookmark = JSON.parse(localStorage.getItem("myBookmark"));
     for (var i = 0; i < myBookmark.length; i++) {
-      if (myBookmark[i] === newsID) {
+      if (myBookmark[i].newsID === newsID) {
         myBookmark.splice(i, 1);
       }
     }
@@ -80,7 +102,12 @@ class Articles extends Component {
       <div className="App-cotainer">
         <div className="container-header">
           {isBookmark ? (
-            <button className="bookmark" onClick={() => this.addBookmark()}>
+            <button
+              className="bookmark"
+              onClick={() =>
+                this.addBookmark(newsData.headline, newsData.thumbnail)
+              }
+            >
               <i className="fa fa-bookmark"></i>Add Bookmark
             </button>
           ) : (
@@ -92,7 +119,7 @@ class Articles extends Component {
 
         {isLoaded ? (
           <span className="loading">
-            <img src={loader} alt="Loader"/>
+            <img src={loader} alt="Loader" />
           </span>
         ) : (
           <div className="container-aricle">

@@ -24,7 +24,7 @@ export default class article extends Component {
             ) : null}
             <div className="post-content">
               <h2>
-              {this.props.type}
+            
                 {this.props.mediaTitle.substring(
                   0,
                   this.props.articleLimit
