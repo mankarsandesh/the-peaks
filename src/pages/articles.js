@@ -42,8 +42,7 @@ class Articles extends Component {
     var newsID = this.props.location.pathname.replace("/article/", "");
     this.fetchNewsData(newsID);
     var myBookmark = JSON.parse(localStorage.getItem("myBookmark") || "[]");
-    console.log(this.findArticles(newsID, myBookmark));
-    if (this.findArticles(newsID, myBookmark)) {
+   if (this.findArticles(newsID, myBookmark)) {
       this.setState({
         isBookmark: false,
       });

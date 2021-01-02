@@ -2,14 +2,24 @@ import React, { Component } from "react";
 import Article from "../components/article/article";
 
 import { useParams } from "react-router-dom";
-export default class Category extends Component {
+class Category extends Component {
+  constructor() {
+    super();
+    this.state = {
+      booksmarkNews: [],
+    };
+  }
+
+  // Compent Mount
+  componentDidMount() {
+    var myBookmark = JSON.parse(localStorage.getItem("myBookmark") || "[]");
+    this.setState({
+      booksmarkNews: myBookmark,
+    });
+  }
+
   render() {
-    const media =
-      "https://www.bbc.co.uk/news/special/2015/newsspec_10857/bbc_news_logo.png?cb=1";
-    const mediaTitle =
-      "The wrong criticism of his performance is to say that he has made mistakes";
-    const mediaDesc =
-      " Confronted with a novel disease for which the country was unprepared, any prime minister would have made errors. The correct criticism is that he has failed to learn from his mistakes and egregiously repeated them";
+    const { booksmarkNews } = this.state;
 
     return (
       <div className="App-cotainer">
@@ -24,72 +34,22 @@ export default class Category extends Component {
             </select>
           </div>
           <div className="container-wrapper">
-            <div className="col-4">
-              <Article
-                media={media}
-                mediaTitle={mediaTitle}
-                mediaDesc={mediaDesc}
-              />
-            </div>
-            <div className="col-4">
-              <Article
-                media={media}
-                mediaTitle={mediaTitle}
-                mediaDesc={mediaDesc}
-              />
-            </div>
-            <div className="col-4">
-              <Article
-                media={media}
-                mediaTitle={mediaTitle}
-                mediaDesc={mediaDesc}
-              />
-            </div>
-            <div className="col-4">
-              <Article
-                media={media}
-                mediaTitle={mediaTitle}
-                mediaDesc={mediaDesc}
-              />
-            </div>
-            <div className="col-4">
-              <Article
-                media={media}
-                mediaTitle={mediaTitle}
-                mediaDesc={mediaDesc}
-              />
-            </div>
-            <div className="col-4">
-              <Article
-                media={media}
-                mediaTitle={mediaTitle}
-                mediaDesc={mediaDesc}
-              />
-            </div>
-            <div className="col-4">
-              <Article
-                media={media}
-                mediaTitle={mediaTitle}
-                mediaDesc={mediaDesc}
-              />
-            </div>
-            <div className="col-4">
-              <Article
-                media={media}
-                mediaTitle={mediaTitle}
-                mediaDesc={mediaDesc}
-              />
-            </div>
-            <div className="col-4">
-              <Article
-                media={media}
-                mediaTitle={mediaTitle}
-                mediaDesc={mediaDesc}
-              />
-            </div>
+            {booksmarkNews.map((item) => (
+              <div className="col-4" key={item.newsID}>
+                <Article
+                  key={item.newsID}
+                  articleURL={item.newsID}
+                  mediaTitle={item.headline}
+                  media={item.image}
+                  articleLimit="200"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>
     );
   }
 }
+
+export default Category;
